@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://127.0.0.1:5500/HTML/f.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tinu's Activity: Methods and Loops</title>
+</head>
+<body>
+
+    <h1>Tinu's Output</h1>
+
+    <p><strong>1. Random Set of Numbers (Loop):</strong></p>
+    <div id="randomNumbersOutput"><ul><li>Number 1: 82</li><li>Number 2: 9</li><li>Number 3: 8</li><li>Number 4: 22</li><li>Number 5: 75</li></ul></div>
+
+    <hr>
+
+    <p><strong>2. Current Date (In-built Method):</strong></p>
+    <div id="currentDateOutput">Thu Oct 23 2025</div>
+
+    <hr>
+
+    <p><strong>3. Rounded Random Number (In-built Method):</strong></p>
+    <div id="roundedRandomNumberOutput">Raw Random Number (0-100): 41.7305 <br> <strong>Rounded Number: 42</strong></div>
+
+    <script>
+        // === 1. Random Set of Numbers (using a Loop) ===
+
+        // Use a loop to generate a set of 5 random numbers between 1 and 100
+        let numbersHTML = "<ul>"; // Start an unordered list
+        for (let i = 0; i < 5; i++) {
+            // Generate a random integer between 1 and 100
+            let randomNumber = Math.floor(Math.random() * 100) + 1;
+            numbersHTML += "<li>Number " + (i + 1) + ": " + randomNumber + "</li>";
+        }
+        numbersHTML += "</ul>"; // Close the unordered list
+
+        // Output the result using document.getElementById()
+        document.getElementById("randomNumbersOutput").innerHTML = numbersHTML;
+
+
+        // === 2. Current Date (using In-built Methods) ===
+
+        // Create a new Date object
+        const today = new Date();
+        // Use an in-built method to get a readable date string
+        const dateString = today.toDateString(); 
+
+        // Output the result
+        document.getElementById("currentDateOutput").innerHTML = dateString;
+
+
+        // === 3. Rounded Random Number (using In-built Methods) ===
+
+        // Generate a random floating point number (e.g., 0.123456789)
+        const rawRandom = Math.random() * 100; // Multiplied by 100 to get a wider range (0 to 100)
+
+        // Use Math.round() to round it to the nearest integer
+        const roundedNumber = Math.round(rawRandom);
+
+        // Create the output string
+        const outputText = `Raw Random Number (0-100): ${rawRandom.toFixed(4)} <br> <strong>Rounded Number: ${roundedNumber}</strong>`;
+
+        // Output the result
+        document.getElementById("roundedRandomNumberOutput").innerHTML = outputText;
+
+    </script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+<div></div></body></html>
